@@ -6,7 +6,6 @@ let inputValue = document.getElementById('todoInput');
 
 let addItem = () => {
     let todoValue = inputValue.value;
-    console.log(todoValue)
     let newTasks = {
         text: todoValue,
         isDone: false
@@ -14,57 +13,51 @@ let addItem = () => {
     todoList.push(newTasks);
     todoValue = "";
     resultArea.innerHTML = newTasks.text;
-    update()
+    update(todoList)
 }
 
 
 
 
 
-let update = () => {
-    let items = "";
-    for (let i = 0; i < todoList.length; i++) {
-        items += `<li style="text-decoration:${todoList[i].isDone ? 'line-through' : ""}" 
-        onclick="mark(${i})">${todoList[i].text} 
-        
-        <button "href='#' onclick="remove(${i})">X</button></div></li>`;
-    }
-    resultArea.innerHTML = items;
+let update = (array) => {
+    let htmlTodoArray = todoList.map((item, index) => {
+        if (item.isDone == false) {
+            return `<li>${item.text} <button onclick="removeItem(${index})">X</button> <button onclick="toggle(${index})">DONE</button>
+            </li>`
+        } else if (item.isDone == true) {
+            return `<li>${item.text} <button onclick="removeItem(${index})">X</button> <button onclick="toggle(${index})">UNDONE</button></li>`.strike();
+        }
+    })
+    resultArea.innerHTML = htmlTodoArray;
 }
 
-let remove = (i) => {
-    todoList.splice(i, 1)
-    update();
+let removeItem = (index) => {
+    todoList.splice(index, 1);
+    console.log = (todoList);
+    update(todoList);
 
 }
 
-let mark = (i) => {
-    todoList[i].isDone = !(todoList[i].isDone)
+let toggle = (index) => {
+    todoList[index].isDone = !(todoList[index].isDone)
     // if (todoList[index].isDone == true) {
     //     todoList[index].isDone == false;
     // } else {
     //     todoList[index].isDone == true
     // }
-    update()
+    update(todoList)
 }
 
-// let showUndone = () => {
-//     if (document.getElementById("myCheck").checked == true) {
-//         let newArray = todoList.filter((item) => {
-//         })
+let showUndone = () => {
+    if (document.getElementById("myCheck").checked == true) {
+        let newArray = todoList.filter((item) => {
+        })
 
-// }
-// }
+}
+}
 
-// let render = () => {
-//     let htmlTodoArray = todoList.map((itme, index) => {
-//         if (item.isDone == false) {
-//             return `<li>${item.text} <button onclick="removeItem(${index})">X</button> <button onclick="
-//             </li>`
-//         }
-//     }
-//     )
-// }
+
 
 // let saveData = () => {
 //     localStorage.setItem("data", JSON.stringify(todoList));
