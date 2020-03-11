@@ -6,7 +6,7 @@ let inputValue = document.getElementById('todoInput');
 
 let addItem = () => {
     let todoValue = inputValue.value;
-    console.log (todoValue)
+    console.log(todoValue)
     let newTasks = {
         text: todoValue,
         isDone: false
@@ -27,7 +27,7 @@ let update = () => {
         items += `<li style="text-decoration:${todoList[i].isDone ? 'line-through' : ""}" 
         onclick="mark(${i})">${todoList[i].text} 
         
-        <button id="deleteBtn "href='#' onclick="remove(${i})">X</button></div></li>`;
+        <button "href='#' onclick="remove(${i})">X</button></div></li>`;
     }
     resultArea.innerHTML = items;
 }
@@ -35,22 +35,53 @@ let update = () => {
 let remove = (i) => {
     todoList.splice(i, 1)
     update();
-    
+
 }
 
 let mark = (i) => {
     todoList[i].isDone = !(todoList[i].isDone)
+    // if (todoList[index].isDone == true) {
+    //     todoList[index].isDone == false;
+    // } else {
+    //     todoList[index].isDone == true
+    // }
     update()
 }
 
+// let showUndone = () => {
+//     if (document.getElementById("myCheck").checked == true) {
+//         let newArray = todoList.filter((item) => {
+//         })
 
+// }
+// }
 
+// let render = () => {
+//     let htmlTodoArray = todoList.map((itme, index) => {
+//         if (item.isDone == false) {
+//             return `<li>${item.text} <button onclick="removeItem(${index})">X</button> <button onclick="
+//             </li>`
+//         }
+//     }
+//     )
+// }
 
+// let saveData = () => {
+//     localStorage.setItem("data", JSON.stringify(todoList));
+// }
 
-// let todoList = [];
-// const check = "fas fa-check";
-// const uncheck = "fa-circle-thin";
-// const LINE_THROUGH = "lineThrough";
+// let getData = () => {
+//     let data = localStorage.getItem("data");
+//     if (data == nul) {
+//         todoList = [];
+//     } else {
+//         let result = JSON.parse(data);
+//         todoList = result;
+//         render(todoList);
+//     }
+// }
+
+// getData();
 
 
 
@@ -75,10 +106,10 @@ let mark = (i) => {
 //   }
 // }
 
-// // Add a "checked" symbol when clicking on a list item
-var list = document.querySelector('ul');
-list.addEventListener('click', function(ev) {
-  if (ev.target.tagName === 'LI') {
-    ev.target.classList.toggle('checked');
-  }
-}, false);
+// // // Add a "checked" symbol when clicking on a list item
+// var list = document.querySelector('ul');
+// list.addEventListener('click', function(ev) {
+//   if (ev.target.tagName === 'LI') {
+//     ev.target.classList.toggle('checked');
+//   }
+// }, false);
