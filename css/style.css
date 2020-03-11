@@ -146,8 +146,8 @@ body {
     width: auto;
 }
 
-/* button {
+button {
   border: none;
-  background: none;
-  color: white;
-} */
+
+  color: black;
+}
