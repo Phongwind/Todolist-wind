@@ -3,6 +3,11 @@ let todoList = [];
 let resultArea = document.getElementById('resultArea');
 let inputValue = document.getElementById('todoInput');
 
+let allButton = document.getElementById('allButton')
+let doneButton = document.getElementById('doneButton')
+let undoneButton = document.getElementById('undoneButton')
+
+
 
 let addItem = () => {
     let todoValue = inputValue.value;
@@ -28,7 +33,7 @@ let update = (array) => {
         } else if (item.isDone == true) {
             return `<li>${item.text} <button onclick="removeItem(${index})">X</button> <button onclick="toggle(${index})">UNDONE</button></li>`.strike();
         }
-    })
+    }).join ('')
     resultArea.innerHTML = htmlTodoArray;
 }
 
@@ -52,10 +57,14 @@ let toggle = (index) => {
 let showUndone = () => {
     if (document.getElementById("myCheck").checked == true) {
         let newArray = todoList.filter((item) => {
-        })
+        })    
 
-}
-}
+}}
+
+undoneButton.addEventListener("click", showUndone)
+
+
+
 
 
 
